@@ -24,7 +24,7 @@ module.exports = function(app) {
             totalDifference = 0;
 
             // Loop through the scores of each adventurer
-            for (var b = 0; a < adventurers[a].scores[b]; b++) {
+            for (var b = 0; b < adventurers[a].scores[b]; b++) {
                 // Calculate the difference between scores
                 totalDifference += Math.abs(parseInt(userScores[b]) - parseInt(adventurers[a].scores[b]));
 
