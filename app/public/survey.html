@@ -161,15 +161,35 @@
         <br>
         <br>
         <br>
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    <a href="#">API Adventurers List</a> |
+                    <a href="#">GitHub Repo</a>
+                </p>
+            </div>
+        </footer>
     </div>
-    <footer class="footer">
-        <div class="container">
-            <p>
-                <a href="#">API Adventurers List</a> |
-                <a href="#">GitHub Repo</a>
-            </p>
+    <div class="modal" id="resultsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Meet Your New Questing Partner!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h2 id="matchName"></h2>
+              <img id="matchPhoto" src="https://pastorboller.files.wordpress.com/2015/06/23-3.jpg" style="width:100%" alt="">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Happy Questing!</button>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -236,10 +256,16 @@
 
                 // POST the new data to the adventurers API
                 $.post(currentURL + "/api/adventurers", userData, function (data) {
-                    alert("working");
+                    // // Grab the result from the POST to display bestMatch name and photo
+                    // $("#matchName").text(data.name);
+                    // $("#matchImg").attr("src", data.photo);
+                    // Display modal
+                    $("#resultsModal").modal("toggle");
                 });
+            } else {
+                alter("Please answer all queries before continuing...");
             }
-
+            return false;
         });
     </script>
 
